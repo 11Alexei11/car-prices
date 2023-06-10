@@ -1,0 +1,64 @@
+<form action="{% url 'calculate_price' %}"method="post">
+    {% csrf_token %}
+    <label for="category">Category</label><br>
+    <select name="category">
+        <option value="Sedan">Sedan</option>
+        <option value="Jeep">Jeep</option>
+        <option value="Hatchback">Sedan</option>
+        <option value="Minivan">Minivan</option>
+        <option value="Coupe">Coupe</option>
+        <option value="Universal">Universal</option>
+        <option value="Microbus">Microbus</option>
+        <option value="Goods wagon">Goods wagon</option>
+        <option value="Pickup">Pickup</option>
+        <option value="Cabriolet">Cabriolet</option>
+        <option value="Limousine">Limousine</option>
+    </select><br><br>
+    <label for="levy">Levy</label><br>
+    <input type="text" id="levy" name="levy"><br><br>
+    <label for="manufacturer">Manufacturer</label><br>
+    <input type="text" id="manufacturer" name="manufacturer"><br><br>
+    <label for="model">Model</label><br>
+    <input type="text" id="model" name="model"><br><br>
+    <label for="prod_year">Prod Year</label><br>
+    <input type="text" id="prod_year" name="prod_year"><br><br>
+    <label for="leather_interior">Leather Interior</label><br>
+    <input type="text" id="leather_interior" name="leather_interior"><br><br>
+    <label for="fuel_type">Fuel type</label><br>
+    <select name="fuel_type">
+        <option value="Petrol">Petrol</option>
+        <option value="Disel">Disel</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Lpg">Lpg</option>
+        <option value="cng">cng</option>
+        <option value="hydrogen">hydrogen</option>
+    </select><br><br>
+    <label for="engine_volume">Engine volume</label><br>
+    <input type="text" id="engine_volume" name="engine_volume"><br><br>
+    <label for="mileage">Mileage</label><br>
+    <input type="text" id="mileage" name="mileage"><br><br>
+    <label for="cylinders">Cylinders</label><br>
+    <input type="text" id="cylinders" name="cylinders"><br><br>
+    <label for="gear_box_type">Gear box type</label><br>
+    <select name="gear_box_type">
+        <option value="Automatic">Automatic</option>
+        <option value="Manual">Manual</option>
+        <option value="Tiptronik">Tiptronik</option>
+        <option value="Variator">Variator</option>
+    </select><br><br>
+    <label for="drive_wheels">Drive wheels</label><br>
+    <select name="drive_wheels">
+        <option value="Four">Four</option>
+        <option value="Front">Front</option>
+        <option value="Rear">Rear</option>
+    </select><br><br>
+    <label for="door">Door</label><br>
+    <input type="text" id="door" name="door"><br><br>
+    <label for="wheel">Wheel</label><br>
+    <input type="text" id="wheel" name="wheel"><br><br>
+    <label for="color">Color</label><br>
+    <input type="text" id="color" name="color"><br><br>
+    <label for="airbugs">Airbugs</label><br>
+    <input type="text" id="airbugs" name="airbugs"><br><br>
+    <input type="submit" value="Vote">
+</form>
