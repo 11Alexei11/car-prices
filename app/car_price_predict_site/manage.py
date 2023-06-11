@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from entering_data.full_pipeline_regressor import FullPipelineRegressor
 
 
 def main():
