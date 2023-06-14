@@ -44,7 +44,7 @@ class ColumnNames:
             cls.CYLINDERS,
             cls.AIRBUGS
         ]
-    
+
     @classmethod
     def string_column_names(cls):
         return [
@@ -79,7 +79,7 @@ class FullPipelineRegressor:
     def __preprocess_strings(self, x: pd.DataFrame):
         encoded_df = x.copy()
         for col in encoded_df.columns:
-            encoded_df.rename(columns={col: col.lower()}, inplace=True)
+            encoded_df.rename(columns={col: col.lower().replace(' ', '_')}, inplace=True)
 
         col_name = 'levy'
         encoded_df[col_name] = encoded_df[col_name].replace({'-': '0'}).astype(np.uint16)
