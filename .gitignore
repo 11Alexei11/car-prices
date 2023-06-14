@@ -1,1 +1,4 @@
 car-price_env
+
+*.pkl
+*__pycache__
