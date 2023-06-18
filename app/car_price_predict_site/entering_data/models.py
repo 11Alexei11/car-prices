@@ -4,10 +4,11 @@ from django.utils.translation import gettext_lazy
 
 
 # Create your models here.
-class Person(models.Model):
+class User(models.Model):
     ID = models.BigAutoField(primary_key=True)
     NAME = models.CharField(max_length=30)
     SURNAME = models.CharField(max_length=30)
+    EMAIL = models.CharField(max_length=30)
     REGISTRATION_DATE = models.DateTimeField()
 
 
@@ -123,7 +124,7 @@ class Car(models.Model):
         FIVE_GRATER = ">5", gettext_lazy(">5")
 
     ID = models.BigAutoField(verbose_name='id', primary_key=True)
-    USER_ID = models.ForeignKey(Person, on_delete=models.CASCADE)
+    USER_ID = models.ForeignKey(User, on_delete=models.CASCADE)
 
     LEVY = models.IntegerField(verbose_name='levy')
     MANUFACTURER = models.CharField(verbose_name='manufacturer', max_length=15)
