@@ -1,0 +1,44 @@
+.input {
+    color:goldenrod;
+    background-color: rgb(211, 230, 255);
+    box-sizing:border-box;
+    border:2px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    padding:10px;
+    border-radius:10px;
+    line-height: 150%;
+    width: 450px;
+    display: inline-block;
+    margin: 30px;
+}
+
+.select {
+    color:gray;
+    box-sizing:border-box;
+    border:2px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    padding:10px;
+    border-radius:10px;
+    line-height: 150%;
+    width: 400px;
+    display: inline-block;
+    margin: 10px 1px;
+}
+
+.label {
+    color:black;
+    box-sizing:border-box;
+    border:2px solid #eee;
+    /* box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
+    padding:10px;
+    border-radius:10px;
+    line-height: 150%;
+    width: 400px;
+    display: inline-block;
+    margin: 10px, 20px;
+}
+
+.body {
+    font-family: sans-serif;
+    margin: 10px;
+}
