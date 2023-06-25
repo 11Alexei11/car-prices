@@ -10,9 +10,11 @@
     width: 450px;
     display: inline-block;
     margin: 30px;
+    position: relative;
 }
 
 .select {
+    position: relative;
     color:gray;
     box-sizing:border-box;
     border:2px solid #eee;
@@ -26,13 +28,14 @@
 }
 
 .label {
+    position: relative;
     color:black;
     box-sizing:border-box;
     border:2px solid #eee;
-    /* box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
     padding:10px;
     border-radius:10px;
     line-height: 150%;
+    padding: 10px;
     width: 400px;
     display: inline-block;
     margin: 10px, 20px;
@@ -40,5 +43,21 @@
 
 .body {
     font-family: sans-serif;
+    position: relative;
     margin: 10px;
+}
+
+.button {
+    color: white;
+    background-color: #4CAF50;
+    font-size: 16px;
+    border-radius: 3px;
+    text-align: center;
+    height: 40px;
+    width: 80px;
+    transition: all 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(2, 2)
 }
