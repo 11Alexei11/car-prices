@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CarPricePredictionsConfig(AppConfig):
+class PricePredictionsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'entering_data'
+    name = 'price_predictions'

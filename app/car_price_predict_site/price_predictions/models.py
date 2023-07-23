@@ -2,14 +2,7 @@ from django.db import models
 
 from django.utils.translation import gettext_lazy
 
-
-# Create your models here.
-class User(models.Model):
-    ID = models.BigAutoField(primary_key=True)
-    NAME = models.CharField(max_length=30)
-    SURNAME = models.CharField(max_length=30)
-    EMAIL = models.CharField(max_length=30)
-    REGISTRATION_DATE = models.DateTimeField()
+from users.models import User
 
 
 class Car(models.Model):
@@ -37,7 +30,7 @@ class Car(models.Model):
         @classmethod
         def column_names(cls):
             return [value for key, value in cls.__dict__.items() if not key.startswith('__') and key.isupper()]
-        
+
         @classmethod
         def numeric_column_names(cls):
             return [
@@ -48,7 +41,7 @@ class Car(models.Model):
                 cls.CYLINDERS,
                 cls.AIRBUGS
             ]
-        
+
         @classmethod
         def string_column_names(cls):
             return [
