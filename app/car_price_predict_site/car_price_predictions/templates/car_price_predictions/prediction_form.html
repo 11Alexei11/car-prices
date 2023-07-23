@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/prediction_form.css' %}"/>
+    </head>
+    <body>
+        <form action="{% url 'calculate_price' %}"method="post">
+            {% csrf_token %}
+            <div class="input">
+                <label for="category" class="label">Category</label><br>
+                <select name="category" id="category" class="select">
+                    <option value="Sedan">Sedan</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Minivan">Minivan</option>
+                    <option value="Coupe">Coupe</option>
+                    <option value="Universal">Universal</option>
+                    <option value="Microbus">Microbus</option>
+                    <option value="Goods wagon">Goods wagon</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Cabriolet">Cabriolet</option>
+                    <option value="Limousine">Limousine</option>
+                </select>
+            </div>
+            <div class="input">    
+                <label type="text" class="label">Levy</label>
+                <input type="text" name="levy" id="levy" class="label" required/>
+            </div>
+            <div class="input">
+                <label for="manufacturer" class="label">Manufacturer</label><br>
+                <input type="text" id="manufacturer" name="manufacturer" class="label">
+            </div><br><br>
+            <div class="input">
+                <label for="model" class="label">Model</label><br>
+                <input type="text" id="model" name="model" class="label">
+            </div>
+            <div class="input">
+                <label for="prod_year" class="label">Prod Year</label><br>
+                <input type="text" id="prod_year" name="prod_year" class="label"> 
+            </div> 
+            <div class="input">
+                <label for="leather_interior" class="label">Leather Interior</label><br>
+                <select name="leather_interior" class="select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>    
+            </div><br><br>
+            <div class="input">
+                <label for="fuel_type" class="label">Fuel type</label><br>
+                <select name="fuel_type" class="select">
+                    <option value="Petrol">Petrol</option>
+                    <option value="Disel">Disel</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Lpg">Lpg</option>
+                    <option value="cng">cng</option>
+                    <option value="hydrogen">hydrogen</option>
+                </select><br><br>
+            </div>
+            <div class="input">
+                <label for="engine_volume" class="label">Engine volume</label><br>
+                <input type="text" id="engine_volume" name="engine_volume" class="label">
+            </div>
+            <div class="input">
+                <label for="mileage" class="label">Mileage</label><br>
+                <input type="text" id="mileage" name="mileage" class="label">
+            </div><br><br>
+            <div class="input">
+                <label for="cylinders" class="label">Cylinders</label><br>
+                <input type="text" id="cylinders" name="cylinders" class="label">
+            </div>
+            <div class="input">
+                <label for="gear_box_type" class="label">Gear box type</label><br>
+                <select name="gear_box_type" class="select">
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Tiptronik">Tiptronik</option>
+                    <option value="Variator">Variator</option>
+                </select>   
+            </div>
+            <div class="input">
+                <label for="drive_wheels" class="label">Drive wheels</label><br>
+                <select name="drive_wheels" class="select">
+                    <option value="4x4">4x4</option>
+                    <option value="Front">Front</option>
+                    <option value="Rear">Rear</option>
+                </select>
+            </div><br><br>
+            <div class="input">
+                <label for="doors" class="label">Doors</label><br>
+                <select name="doors" class="select">
+                    <option value="04-May">04-May</option>
+                    <option value="02-Mar">02-Mar</option>
+                    <option value=">5">gr_5</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="wheel" class="label">Wheel</label><br>
+                <select name="wheel" class="select">
+                    <option value="Left wheel">Left wheel</option>
+                    <option value="Right-hand drive">Right-hand drive</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="color" class="label">Color</label><br>
+                <input type="text" id="color" name="color" class="label">   
+            </div>
+            <div class="input">
+                <label for="airbugs" class="label">Airbugs</label><br>
+                <input type="text" id="airbugs" name="airbugs" class="label">    
+            </div>
+            <input type="submit" value="Vote" class="button">
+        </form>
+    </body>
+</html>
