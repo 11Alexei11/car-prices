@@ -6,10 +6,13 @@ import datetime
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello")
+    return render(request, 'users/login_form.html')
 
 def base_register_view(request):
     return render(request, 'users/register_form.html')
+
+def base_login_view(request):
+    return render(request, 'users/login_form.html')
 
 def registrate_user_view(request):
     if request.POST:
