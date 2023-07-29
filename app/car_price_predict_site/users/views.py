@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
 from .models import User
 
 import datetime
@@ -17,14 +18,21 @@ def base_login_view(request):
 def registrate_user_view(request):
     if request.POST:
         name = request.POST['name']
-        surname = request.POST['surname']
         email = request.POST['email']
+        password = request.POST['password']
 
-        if not User.objects.filter(name=name, surname=surname, email=email).exists():
+        if not User.objects.filter(NAME=name, EMAIL=email, PASSWORD=password).exists():
             user = User(
-                name=name,
-                surname=surname,
-                email=email,
-                registration_date=datetime.datetime.now()
+                NAME=name,
+                EMAIL=email,
+                PASSWORD=password
             )
             user.save()
+            messages.success(request=request, message="You have registrated succesfully")
+        else:
+            messages.error(request=request, message="This user has already registered")
+
+        return render(request, 'users/login_form.html')
+    else:
+        print(request.GET)
+        raise Exception('this request should be post')
