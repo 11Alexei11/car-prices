@@ -27,7 +27,7 @@ def registrate_user_view(request):
                 EMAIL=email,
                 PASSWORD=password
             )
-            user.save()
+            # user.save()
             messages.success(request=request, message="You have registrated succesfully")
         else:
             messages.error(request=request, message="This user has already registered")
