@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/prediction_form.css' %}"/>
     </head>
     <body>
-        <form action="{% url 'calculate_price' %}"method="post">
+        <form action="{% url 'calc-price' %}"method="post">
             {% csrf_token %}
             <div class="input">
                 <label for="category" class="label">Category</label><br>
@@ -36,14 +36,14 @@
             </div>
             <div class="input">
                 <label for="prod_year" class="label">Prod Year</label><br>
-                <input type="text" id="prod_year" name="prod_year" class="label"> 
-            </div> 
+                <input type="text" id="prod_year" name="prod_year" class="label">
+            </div>
             <div class="input">
                 <label for="leather_interior" class="label">Leather Interior</label><br>
                 <select name="leather_interior" class="select">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
-                </select>    
+                </select>
             </div><br><br>
             <div class="input">
                 <label for="fuel_type" class="label">Fuel type</label><br>
@@ -75,7 +75,7 @@
                     <option value="Manual">Manual</option>
                     <option value="Tiptronik">Tiptronik</option>
                     <option value="Variator">Variator</option>
-                </select>   
+                </select>
             </div>
             <div class="input">
                 <label for="drive_wheels" class="label">Drive wheels</label><br>
@@ -102,11 +102,11 @@
             </div>
             <div class="input">
                 <label for="color" class="label">Color</label><br>
-                <input type="text" id="color" name="color" class="label">   
+                <input type="text" id="color" name="color" class="label">
             </div>
             <div class="input">
                 <label for="airbugs" class="label">Airbugs</label><br>
-                <input type="text" id="airbugs" name="airbugs" class="label">    
+                <input type="text" id="airbugs" name="airbugs" class="label">
             </div>
             <input type="submit" value="Vote" class="button">
         </form>
