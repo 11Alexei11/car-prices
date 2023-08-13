@@ -1,13 +1,11 @@
-from django.shortcuts import render, HttpResponse, redirect
-from django.contrib import messages
+from django.shortcuts import render, redirect, HttpResponse
 from .models import User
 
-import datetime
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'users/login_form.html')
+    return redirect('login-form')
 
 def base_register_view(request):
     return render(request, 'users/register_form.html')
@@ -28,11 +26,11 @@ def registrate_user_view(request):
                 PASSWORD=password
             )
             user.save()
-            messages.success(request=request, message="You have registrated succesfully")
+            print('new user')
+            return redirect('login-form')
         else:
-            messages.error(request=request, message="This user has already registered")
-
-        return render(request, 'users/login_form.html')
+            print('existing user')
+            return redirect('registration-form')
     else:
         print(request.GET)
-        raise Exception('this request should be post')
+        raise Exception('this requesregister_statust should be post')

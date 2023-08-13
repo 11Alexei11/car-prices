@@ -35,7 +35,7 @@ class Car(models.Model):
         def numeric_column_names(cls):
             return [
                 cls.LEVY,
-                cls.PROD_YEAR, 
+                cls.PROD_YEAR,
                 cls.LEATHER_INTERIOR,
                 cls.MILEAGE,
                 cls.CYLINDERS,
@@ -69,7 +69,7 @@ class Car(models.Model):
         PICKUP = "Pickup", gettext_lazy("Pickup")
         Cabriolet = "Cabriolet", gettext_lazy("Cabriolet")
         LIMOUSINE = "Limousine", gettext_lazy("Limousine")
-    
+
     class FuelType(models.TextChoices):
         PETROL = "Petrol", gettext_lazy("Petrol")
         DISEL = "Diesel", gettext_lazy("Diesel")
@@ -77,20 +77,20 @@ class Car(models.Model):
         LPG = "LPG", gettext_lazy("LPG")
         CNG = "CNG", gettext_lazy("CNG")
         HYDROGEN = "Hydrogen", gettext_lazy("Hydrogen")
-         
+
     class GearBoxType(models.TextChoices):
         AUTOMATIC = 'Automatic', gettext_lazy("Automatic")
         TIPTRONIC = 'Tiptronic', gettext_lazy("Tiptronic")
         VARIATOR = 'Variator', gettext_lazy("Variator")
         MANUAL = 'Manual', gettext_lazy("Manual")
-    
+
     class DriveWheels(models.TextChoices):
         FOUR = "4x4", gettext_lazy("4x4")
-        FRONT = "Front", gettext_lazy("Front") 
+        FRONT = "Front", gettext_lazy("Front")
         REAR = 'Rear', gettext_lazy("Rear")
-    
+
     class Wheel(models.TextChoices):
-        LEFT_WHEEL = "Left wheel", gettext_lazy("Left wheel") 
+        LEFT_WHEEL = "Left wheel", gettext_lazy("Left wheel")
         RIGHT_HAND_DRIVE = "Right-hand drive", gettext_lazy("Right-hand drive")
 
     class Color(models.TextChoices):
@@ -110,7 +110,7 @@ class Car(models.Model):
         CARNELIAN_RED = 'Carnelian red', gettext_lazy("Carnelian red")
         PURPLE = 'Purple', gettext_lazy("Purple")
         PINK = 'Pink', gettext_lazy("Pink")
-    
+
     class Doors(models.TextChoices):
         FOUR = "04-may", gettext_lazy("04-may")
         TWO = "02-mar", gettext_lazy("02-mar")
