@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import User
+from price_predictions.views import prediction_form
 
+from django.contrib.auth import login
+
+from users.authentication_backend import EmailPasswordBackend
 
 # Create your views here.
 
@@ -34,3 +38,17 @@ def registrate_user_view(request):
     else:
         print(request.GET)
         raise Exception('this requesregister_statust should be post')
+
+def login_user_view(request):
+    if request.GET:
+        email = request.GET['email']
+        password = request.GET['password']
+        user = EmailPasswordBackend.authenticate(request=request, email=email, password=password)
+
+        if user is not None:
+            login(request=request, user=user, backend='users.authentication_backend.EmailPasswordBackend')
+            return redirect('prediction-form')
+        else:
+            print('not exists')
+
+        return redirect('login-form')
