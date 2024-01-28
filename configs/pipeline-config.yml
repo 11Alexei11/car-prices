@@ -1,0 +1,11 @@
+dataset:
+  path_to_train: /home/ares/work/car-price/data/dataset/train.csv
+  path_to_test: /home/ares/work/car-price/data/dataset/test.csv
+
+preprocessor:
+ string_encoders_path: /home/ares/work/car-price/data/predict/string_encoders.pkl
+ pca_converter_path: /home/ares/work/car-price/data/predict/pca_converter.pkl
+ feature_extender_path: /home/ares/work/car-price/data/predict/feature_extender.pkl
+
+regressor:
+  model_path: /home/ares/work/car-price/data/predict/model.pkl
