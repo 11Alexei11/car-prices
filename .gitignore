@@ -1,6 +1,5 @@
 car-price_env
 
-*.pkl
 *__pycache__
 /app
 catboost_info/*
