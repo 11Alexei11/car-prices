@@ -40,23 +40,23 @@ stages:
       size: 1694
     - path: src/research/pipeline/train.py
       hash: md5
-      md5: f6249024b2060a08b6f435333ab158d0
-      size: 582
+      md5: 9c8f80953eb178c4c7f3e20cff62a1dc
+      size: 687
     params:
       configs/pipeline-config.yml:
         train.train_share: 0.8
     outs:
     - path: data/stages/train/model.pkl
       hash: md5
-      md5: dae45321df9f9e8ba694ed30003bb936
-      size: 158980
+      md5: c65c399233fad23f672b2695a7cc3079
+      size: 1175
   evaluate:
     cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH && python3 ./src/research/pipeline/evaluate.py
     deps:
     - path: ./src/research/pipeline/evaluate.py
       hash: md5
-      md5: a5b7a53cdb5432e4162c78abb2c610d8
-      size: 1872
+      md5: 7ff9178c022ae1e9fa5480b446d0865c
+      size: 2005
     - path: data/stages/preprocess/x_test_preprocessed.bin
       hash: md5
       md5: ab3c6851a082609930c27d5f1d69179d
@@ -68,6 +68,6 @@ stages:
     outs:
     - path: data/stages/evaluate/
       hash: md5
-      md5: 20ffa273e41e3ae2a7c94e9a1124407b.dir
-      size: 1050
+      md5: b89dc231dc39d3cb1bec1d3642449588.dir
+      size: 1156
       nfiles: 5

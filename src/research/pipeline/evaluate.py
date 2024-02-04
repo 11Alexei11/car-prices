@@ -2,10 +2,11 @@ import os
 import pickle as pkl
 import json
 
-from xgboost import XGBRegressor
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score as r2, mean_absolute_percentage_error as mape, mean_absolute_error as mae
 from dvclive import Live
 from sklearn.preprocessing import MinMaxScaler
+import hashlib
 
 import numpy as np
 
@@ -14,8 +15,9 @@ from src.research.pipeline.utils import save_bin, load_bin, descale
 
 
 def main() -> None:
+    print(hashlib.md5(open("/home/ares/work/car-price/src/research/pipeline/train.py", 'rb').read()).hexdigest())
     config = Config()
-    model: XGBRegressor = load_bin(path_to_load=config.train_model_path)
+    model = load_bin(path_to_load=config.train_model_path)
 
     x_test_preprocessed: np.ndarray = load_bin(config.preprocess_x_test_preprocessed_path)
     y_test_scaled: np.ndarray = load_bin(config.preprocess_y_test_preprocessed_path)

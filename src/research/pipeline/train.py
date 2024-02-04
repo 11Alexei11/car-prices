@@ -1,5 +1,7 @@
 
 from xgboost import XGBRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 
 from src.research.pipeline.config import Config
 from src.research.pipeline.utils import save_bin, load_bin
@@ -7,7 +9,7 @@ from src.research.pipeline.utils import save_bin, load_bin
 
 def main():
     config = Config()
-    model = XGBRegressor()
+    model = LinearRegression()
 
     # load preprocessed dataset
     X_preprocessed_train = load_bin(config.preprocess_x_train_preprocessed_path)
