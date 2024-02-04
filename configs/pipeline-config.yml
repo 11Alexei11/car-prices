@@ -1,11 +1,34 @@
-dataset:
-  path_to_train: /home/ares/work/car-price/data/dataset/train.csv
-  path_to_test: /home/ares/work/car-price/data/dataset/test.csv
+preprocess:
+  dataset:
+    path_to_train: /home/ares/work/car-price/data/dataset_raw/train.csv
+    path_to_test: /home/ares/work/car-price/data/dataset_raw/test.csv
+    x_train_preprocessed_path: /home/ares/work/car-price/data/stages/preprocess/x_train_preprocessed.bin
+    y_train_preprocessed_path: /home/ares/work/car-price/data/stages/preprocess/y_train_preprocessed.bin
+    x_test_preprocessed_path: /home/ares/work/car-price/data/stages/preprocess/x_test_preprocessed.bin
+    y_test_preprocessed_path: /home/ares/work/car-price/data/stages/preprocess/y_test_preprocessed.bin
+    target_col_name: price
 
-preprocessor:
- string_encoders_path: /home/ares/work/car-price/data/predict/string_encoders.pkl
- pca_converter_path: /home/ares/work/car-price/data/predict/pca_converter.pkl
- feature_extender_path: /home/ares/work/car-price/data/predict/feature_extender.pkl
+  string_encoders:
+    path: /home/ares/work/car-price/data/stages/preprocess/string_encoders.pkl
 
-regressor:
-  model_path: /home/ares/work/car-price/data/predict/model.pkl
+  scalers:
+    path: /home/ares/work/car-price/data/stages/preprocess/scalers.pkl
+
+  # pca_converter:
+  #   path: /home/ares/work/car-price/data/stages/preprocess/pca_converter.pkl
+  #   n_components_out: 3
+
+  # polynomial_features_extender:
+  #   path: /home/ares/work/car-price/data/stages/preprocess/feature_extender.pkl
+  #   degree: 3
+
+
+train:
+  train_share: 0.8
+  regressor:
+    model_path: /home/ares/work/car-price/data/stages/train/model.pkl
+    # params:
+
+evaluate:
+  metrics_dir: /home/ares/work/car-price/data/stages/evaluate/
+  plots_dir: /home/ares/work/car-price/data/stages/evaluate/

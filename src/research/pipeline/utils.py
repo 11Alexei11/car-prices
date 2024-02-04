@@ -1,36 +1,61 @@
 import pickle as pkl
 import os
-import uuid
-import json
+from typing import Any, Dict, ByteString
+
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+from xgboost import XGBRegressor
+
+# TModel = TypeVar("TModel", XGBRegressor)
+
+def save_bin(artifact: ByteString, path_to_save: str) -> None:
+    """Function to save bin
+
+    Args:
+        artifact (Bytestring): object to save
+        path_to_save (str): Path to save
+    """
+    if not os.path.exists(os.path.dirname(path_to_save)):
+        os.mkdir(os.path.dirname(path_to_save))
+
+    with open(path_to_save, 'wb') as f:
+        pkl.dump(artifact, f)
 
 
-def save_bin(model, path_to_save) -> None:
-    if path_to_save and os.path.exists(path_to_save):
-        with open(path_to_save, 'wb') as f:
-            pkl.dump(model, f)
+def load_bin(path_to_load: str) -> ByteString:
+    """Function to load artifact
 
-class Experiment:
-    def __init__(self, experiment_name, experimen_dir):
-        self._experiment_name = experiment_name + '-' + str(uuid.uuid4())[:4]
-        self._experiment_dir = experimen_dir
+    Args:
+        path_to_load (str): Path to string
 
-        self.__reset_experiment()
+    Returns:
+        ByteString: Artifact
+    """
+    if os.path.exists(path_to_load):
+        with open(path_to_load, 'rb') as f:
+            return pkl.load(f)
 
-    def __reset_experiment(self):
-        self.path_to_specific_experiment = os.path.join(self._experiment_dir, self._experiment_name)
 
-        os.makedirs(self.path_to_specific_experiment, exist_ok=True)
-        os.makedirs(os.path.join(self.path_to_specific_experiment, 'visualize'), exist_ok=True)
-        os.makedirs(os.path.join(self.path_to_specific_experiment, 'metrics'), exist_ok=True)
-        os.makedirs(os.path.join(self.path_to_specific_experiment, 'params'), exist_ok=True)
-        os.makedirs(os.path.join(self.path_to_specific_experiment, 'models'), exist_ok=True)
+def get_artifact(mode, artifact_class, artifact_path, params_dict: Dict[str, Any]):
+    if mode == "train":
+        artifact = artifact_class(**params_dict)
+    else:
+        artifact = load_bin(artifact_path)
 
-        print(f'experiment with name: {self._experiment_name} was created')
-    
-    def log_metrics(self, metrics_dict: dict):
-        with open(os.path.join(self.path_to_specific_experiment, 'metrics/metrics.json'), 'w')as f:
-            json.dump(metrics_dict, f)
-        print('metrics were saved')
-    
-    def log_params(self, params: dict):
-        pass
+    return artifact
+
+
+def scale(y: np.ndarray):
+    return np.log1p(y)
+
+
+def descale(y_scaled: np.ndarray, scaler: MinMaxScaler) -> np.ndarray:
+    return scaler.inverse_transform(y_scaled)
+
+class ColumnNames:
+    MILEAGE = "mileage"
+
+
+class LaunchMode:
+    TRAIN = "train"
+    TEST = "test"
