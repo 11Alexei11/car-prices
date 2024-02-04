@@ -14,20 +14,10 @@ preprocess:
   scalers:
     path: /home/ares/work/car-price/data/stages/preprocess/scalers.pkl
 
-  # pca_converter:
-  #   path: /home/ares/work/car-price/data/stages/preprocess/pca_converter.pkl
-  #   n_components_out: 3
-
-  # polynomial_features_extender:
-  #   path: /home/ares/work/car-price/data/stages/preprocess/feature_extender.pkl
-  #   degree: 3
-
-
 train:
   train_share: 0.8
   regressor:
     model_path: /home/ares/work/car-price/data/stages/train/model.pkl
-    # params:
 
 evaluate:
   metrics_dir: /home/ares/work/car-price/data/stages/evaluate/
