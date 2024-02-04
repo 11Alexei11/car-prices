@@ -1,0 +1,34 @@
+stages:
+  preprocess:
+    cmd: python3 ./src/research/pipeline/preprocess.py
+    deps:
+    - ./data/dataset_raw/test.csv
+    - ./data/dataset_raw/train.csv
+    - src/research/pipeline/preprocess.py
+    outs:
+    - ./data/stages/preprocess/
+  train:
+    cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH && python3 ./src/research/pipeline/train.py
+    deps:
+    - data/stages/preprocess/string_encoders.pkl
+    - data/stages/preprocess/x_train_preprocessed.bin
+    - data/stages/preprocess/y_train_preprocessed.bin
+    - src/research/pipeline/train.py
+    params:
+    - configs/pipeline-config.yml:
+      - train.train_share
+    outs:
+    - data/stages/train/model.pkl
+  evaluate:
+    cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH && python3 ./src/research/pipeline/evaluate.py
+    deps:
+    - ./src/research/pipeline/evaluate.py
+    - data/stages/preprocess/x_test_preprocessed.bin
+    - data/stages/preprocess/y_test_preprocessed.bin
+    outs:
+    - data/stages/evaluate/
+metrics:
+- data/stages/evaluate/metrics.json
+plots:
+- data/stages/evaluate/plots/metrics:
+    x: step

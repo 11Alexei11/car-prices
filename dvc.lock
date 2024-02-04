@@ -1,0 +1,73 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python3 ./src/research/pipeline/preprocess.py
+    deps:
+    - path: ./data/dataset_raw/test.csv
+      hash: md5
+      md5: a416494cc7248e617ccee3a74db1240b
+      size: 1773
+    - path: ./data/dataset_raw/train.csv
+      hash: md5
+      md5: a75e126e06f2e69f902585c50f2f4c26
+      size: 24052
+    - path: src/research/pipeline/preprocess.py
+      hash: md5
+      md5: 6a51227c13635124d999464b85b08104
+      size: 3481
+    outs:
+    - path: ./data/stages/preprocess/
+      hash: md5
+      md5: b9d4f2bef5c2cad49bf951208d49176b.dir
+      size: 52630
+      nfiles: 6
+  initialization:
+    cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH
+  train:
+    cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH && python3 ./src/research/pipeline/train.py
+    deps:
+    - path: data/stages/preprocess/string_encoders.pkl
+      hash: md5
+      md5: 9309becf7c9363d94caefa10a7e0c060
+      size: 1331
+    - path: data/stages/preprocess/x_train_preprocessed.bin
+      hash: md5
+      md5: 91510c164bcd7bc02291fa265f8ac3e1
+      size: 40843
+    - path: data/stages/preprocess/y_train_preprocessed.bin
+      hash: md5
+      md5: 3068a2c062281b64810cd3b97d8b2f5f
+      size: 1694
+    - path: src/research/pipeline/train.py
+      hash: md5
+      md5: f6249024b2060a08b6f435333ab158d0
+      size: 582
+    params:
+      configs/pipeline-config.yml:
+        train.train_share: 0.8
+    outs:
+    - path: data/stages/train/model.pkl
+      hash: md5
+      md5: dae45321df9f9e8ba694ed30003bb936
+      size: 158980
+  evaluate:
+    cmd: export PYTHONPATH=./src/research/pipeline/:$PYTHONPATH && python3 ./src/research/pipeline/evaluate.py
+    deps:
+    - path: ./src/research/pipeline/evaluate.py
+      hash: md5
+      md5: a5b7a53cdb5432e4162c78abb2c610d8
+      size: 1872
+    - path: data/stages/preprocess/x_test_preprocessed.bin
+      hash: md5
+      md5: ab3c6851a082609930c27d5f1d69179d
+      size: 4568
+    - path: data/stages/preprocess/y_test_preprocessed.bin
+      hash: md5
+      md5: b56dc8d1b68ec22d742ef18dcb3a8164
+      size: 243
+    outs:
+    - path: data/stages/evaluate/
+      hash: md5
+      md5: 20ffa273e41e3ae2a7c94e9a1124407b.dir
+      size: 1050
+      nfiles: 5
